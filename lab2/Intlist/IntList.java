@@ -16,7 +16,7 @@ public class IntList {
      * Remaining elements of list.
      */
     public IntList rest;
-
+    //-------------Constructor ----------------
     /**
      * A List with first FIRST0 and rest REST0.
      */
@@ -32,9 +32,9 @@ public class IntList {
     /* NOTE: public IntList () { }  would also work. */
         this(0, null);
     }
-
-    /**
-     * Returns a list equal to L with all elements squared. Destructive.
+    //-------------------Methods-----------------
+    /**1.
+     * modifies the list so that all of its elements are squared.. Destructive.
      */
     public static void dSquareList(IntList L) {
 
@@ -44,15 +44,15 @@ public class IntList {
         }
     }
 
-    /**
+    /**2.
      * Returns a list equal to L with all elements squared. Non-destructive.
      */
     public static IntList squareListIterative(IntList L) {
         if (L == null) {
             return null;
         }
-        IntList res = new IntList(L.first * L.first, null);
-        IntList ptr = res;
+        IntList res = new IntList(L.first * L.first, null); //得保留一个头节点，到时候可以找到 直接返回
+        IntList ptr = res; //用这个来遍历。构建我们的list
         L = L.rest;
         while (L != null) {
             ptr.rest = new IntList(L.first * L.first, null);
@@ -61,8 +61,7 @@ public class IntList {
         }
         return res;
     }
-
-    /**
+    /*3.
      * Returns a list equal to L with all elements squared. Non-destructive.
      */
     public static IntList squareListRecursive(IntList L) {
@@ -75,14 +74,23 @@ public class IntList {
     /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
 
 
-    /**
+    /**4.
      * Returns a list consisting of the elements of A followed by the
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if(A==null){
+            A = B;
+            return A;
+        }
+        IntList ptr = A;
+        while(A.rest!=null){
+            A = A.rest;
+        }
+        A.rest = B;
+        return ptr;
     }
 
     /**
@@ -90,8 +98,36 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        /* 最开始写错的
+        if(A==null){
+            return B;
+        }
+        IntList res = new IntList(A.first,null);
+        IntList ptr = res;
+        A = A.rest;
+        while(A!=null){
+            res.rest = A;
+            A = A.rest;
+        }
+        res.rest = B;
+
+        return ptr;*/
+        // 修正后, 要点: 是遍历一遍A，每次都给ptr实例化一个新的！！
+        if(A==null){
+            return B;
+        }
+        IntList res = new IntList(A.first,null);
+        IntList ptr = res;
+        A = A.rest;
+        while(A!=null){
+            ptr.rest = new IntList(A.first, null);
+            A = A.rest;
+            ptr = ptr.rest;
+        }
+        ptr.rest = B;
+
+        return res;
+
     }
 
 
