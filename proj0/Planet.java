@@ -13,7 +13,7 @@ public class Planet {
     public double mass;
     /* The name of the file that corresponds to the image that depicts the planet*/
     public String imgFileName;
-    public double G = 6.67e-11;
+    private double G = 6.67e-11;
 
     /* two Planet constructors that can initialize an instance of the Planet class*/
     public Planet(double xP, double yP, double xV, double yV, double m, String img){
