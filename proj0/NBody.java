@@ -74,7 +74,6 @@ public class NBody {
             time += dt;
             //System.out.println(time);
         }
-        System.out.println(2);
         StdOut.printf("%d\n", planetArray.length);
         StdOut.printf("%.2e\n", radius);
         for (int i = 0; i < planetArray.length; i++) {
