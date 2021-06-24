@@ -17,7 +17,7 @@
 
 public class LinkedListDeque<T> {
 
-    public class DequeNode{
+    private class DequeNode{
 
         public DequeNode prev;
         public T item;
@@ -42,7 +42,7 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
-    /* Constructor with one node*/
+    /* Constructor with one node
     public LinkedListDeque(T x){
         size = 1;
 
@@ -51,27 +51,26 @@ public class LinkedListDeque<T> {
         sentinel.prev = sentinel.next;
 
 
-    }
+    }*/
 
 
     /*Adds an item of type T to the front of the deque*/
     public void addFirst(T item){
-        sentinel.next = new DequeNode(sentinel,item,sentinel.next);
-        sentinel.next.next.prev = sentinel.next;
-        //DequeNode newNode = new DequeNode(sentinel, item, sentinel.next);
-        //sentinel.next.prev = newNode;
-        //sentinel.next = newNode;
-        //sentinel.next = newNode;
+        //sentinel.next = new DequeNode(sentinel,item,sentinel.next);
+        //sentinel.next.next.prev = sentinel.next;
+        DequeNode newNode = new DequeNode(sentinel, item, sentinel.next);
+        sentinel.next.prev = newNode;
+        sentinel.next = newNode;
         //sentinel.next.next.prev = newNode;
         size ++;
     }
     /*Adds an item of type T to the back of the deque*/
     public void addLast(T item){
-        sentinel.prev = new DequeNode(sentinel.prev, item, sentinel);
-        sentinel.prev.prev.next = sentinel.prev;
-        //DequeNode newNode = new DequeNode(sentinel.prev, item, sentinel);
-        //sentinel.prev.next = newNode;
-        //sentinel.prev = newNode;
+        //sentinel.prev = new DequeNode(sentinel.prev, item, sentinel);
+        //sentinel.prev.prev.next = sentinel.prev;
+        DequeNode newNode = new DequeNode(sentinel.prev, item, sentinel);
+        sentinel.prev.next = newNode;
+        sentinel.prev = newNode;
         size++;
     }
 
