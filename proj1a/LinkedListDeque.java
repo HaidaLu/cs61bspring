@@ -113,6 +113,7 @@ public class LinkedListDeque<T> {
             return null;
         }
         T removeItem = sentinel.prev.item;
+        sentinel.prev.prev.next = sentinel;
         sentinel.prev = sentinel.prev.prev;
         return removeItem;
     }
