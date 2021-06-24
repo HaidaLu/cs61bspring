@@ -57,18 +57,11 @@ public class LinkedListDeque<T> {
     /*Adds an item of type T to the front of the deque*/
     public void addFirst(T item){
         size++;
-        if(sentinel.prev == sentinel){
-            DequeNode newNode = new DequeNode(sentinel, item, sentinel.next);
-            sentinel.next = newNode;
-            sentinel.prev = newNode;
-        }else {
-            //sentinel.next = new DequeNode(sentinel,item,sentinel.next);
-            //sentinel.next.next.prev = sentinel.next;
-            DequeNode newNode = new DequeNode(sentinel, item, sentinel.next);
-            sentinel.next.prev = newNode;
-            sentinel.next = newNode;
-        }
-
+        //sentinel.next = new DequeNode(sentinel,item,sentinel.next);
+        //sentinel.next.next.prev = sentinel.next;
+        DequeNode newNode = new DequeNode(sentinel, item, sentinel.next);
+        sentinel.next.prev = newNode;
+        sentinel.next = newNode;
     }
     /*Adds an item of type T to the back of the deque*/
     public void addLast(T item){
@@ -106,11 +99,13 @@ public class LinkedListDeque<T> {
     public T removeFirst(){
         if (sentinel.next == sentinel) {
             return null;
+        }else{
+            T removeItem = sentinel.next.item;
+            sentinel.next = sentinel.next.next;
+            sentinel.next.prev = sentinel;
+            size--;
+            return removeItem;
         }
-        T removeItem = sentinel.next.item;
-        sentinel.next = sentinel.next.next;
-        sentinel.next.prev = sentinel;
-        return removeItem;
     }
 
     /*Removes and returns the item at the back of the deque
@@ -118,11 +113,13 @@ public class LinkedListDeque<T> {
     public T removeLast(){
         if(sentinel.prev == sentinel){
             return null;
+        }else{
+            T removeItem = sentinel.prev.item;
+            sentinel.prev.prev.next = sentinel;
+            sentinel.prev = sentinel.prev.prev;
+            size--;
+            return removeItem;
         }
-        T removeItem = sentinel.prev.item;
-        sentinel.prev.prev.next = sentinel;
-        sentinel.prev = sentinel.prev.prev;
-        return removeItem;
     }
 
     /*Gets the item at the given index, where o is the front, 1is the next item, and so forth.
@@ -130,11 +127,12 @@ public class LinkedListDeque<T> {
     * Must not alter the deque!*/
     public T get(int index){
         DequeNode p = sentinel.next;
-        if(sentinel.prev == sentinel){
+        if(sentinel.prev == sentinel||index>size){
             return null;
         }
-        while(index != 1 ){
+        while(index != 0 ){
             p = p.next;
+            index--;
         }
         return p.item;
 

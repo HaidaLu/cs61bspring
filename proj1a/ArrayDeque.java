@@ -7,7 +7,7 @@ public class ArrayDeque<T> {
     }
 
     public void addFirst(T item){
-        while(size>16 || usageFactor()<25){
+        while(size>16 && usageFactor()<25){
             halfItemLength();
         }
         if (size == items.length){
@@ -40,7 +40,7 @@ public class ArrayDeque<T> {
 
 
     public void addLast(T item){
-        while(size>16 || usageFactor()<25){
+        while(size>16 && usageFactor()<25){
             halfItemLength();
         }
         if(size == items.length){
@@ -48,7 +48,6 @@ public class ArrayDeque<T> {
         }
         items[size] = item;
         size++;
-
     }
 
     public boolean isEmpty(){
@@ -66,15 +65,21 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst(){
+        if(size == 0) {
+            return null;
+        }
         T firstItem = items[0];
-        size --;
         T[] a =(T[])new Object[items.length-1];
         System.arraycopy(items,1,a,0,size-1);
         items = a;
+        size--;
         return firstItem;
     }
 
     public T removeLast(){
+        if(size == 0){
+            return null;
+        }
         T lastItem = items[size - 1];
         items[size-1] = null;
         size--;
@@ -85,7 +90,7 @@ public class ArrayDeque<T> {
         if(index > this.size){
             return null;
         }else{
-            return items[size-1];
+            return items[index];
         }
     }
 }
