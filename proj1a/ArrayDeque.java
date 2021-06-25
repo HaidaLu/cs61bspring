@@ -78,7 +78,6 @@ public class ArrayDeque<T> {
         items[(nextFirst + 1) % items.length] = null;
         nextFirst = (nextFirst + 1) % items.length;
         size--;
-        System.out.println(items.length);
         return firstItem;
     }
 
@@ -86,9 +85,9 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        T lastItem = items[(nextLast - 1) % items.length];
-        items[(nextLast - 1) % items.length] = null;
-        nextLast = (nextLast - 1) % items.length;
+        T lastItem = items[(nextLast - 1 + items.length) % items.length];
+        items[(nextLast - 1 + items.length) % items.length] = null;
+        nextLast = (nextLast - 1 + items.length) % items.length;
         size--;
         return lastItem;
     }
