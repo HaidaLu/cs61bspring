@@ -7,8 +7,8 @@ public class ArrayDeque<T> {
     public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
-        nextLast = 1;
-        nextFirst = 0;
+        nextLast = 0;
+        nextFirst = items.length - 1;
     }
 
     public void addFirst(T item) {
