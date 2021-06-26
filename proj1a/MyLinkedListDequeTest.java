@@ -9,6 +9,39 @@ public class MyLinkedListDequeTest {
         //System.out.println(lld1.size());
 
         ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
+/*
+        ad1.addLast(0);
+        ad1.addLast(1);
+        ad1.addLast(2);
+        ad1.addLast(3);
+        ad1.addLast(4);
+        ad1.addLast(5);
+        ad1.addLast(6);
+        ad1.addLast(7);
+        ad1.addLast(8);
+        ad1.addLast(9);
+        ad1.addLast(10);
+
+
+ */
+        /*
+        System.out.println("--------------------");
+        ad1.addFirst(0);
+        ad1.addFirst(1);
+        ad1.addFirst(2);
+        ad1.addFirst(3);
+        ad1.addFirst(4);
+        ad1.addFirst(5);
+        ad1.addFirst(6);
+        ad1.addFirst(7);
+        ad1.addFirst(8);
+        ad1.addFirst(9);
+        ad1.addFirst(10);
+        System.out.println(ad1.removeFirst());
+*/
+
+
+        //System.out.println(ad1.get(3));
         /*
         ad1.addFirst(5);
         ad1.removeFirst();
@@ -65,7 +98,7 @@ public class MyLinkedListDequeTest {
         System.out.println(ad1.get(0));*/
 
         //ArrayDeque<Integer> ad2 = new ArrayDeque<Integer>();
-
+        /*
         ad1.addLast(0);
         System.out.println(ad1.get(0));
         ad1.addLast(2);
@@ -83,7 +116,31 @@ public class MyLinkedListDequeTest {
         ad1.addFirst(14);
         System.out.println(ad1.removeLast());
         System.out.println(ad1.get(1));
-        ad1.printDeque();
+        ad1.printDeque();*/
+
+        ad1.addFirst(0);
+        System.out.println(ad1.get(0));
+        ad1.addFirst(2);
+        ad1.addFirst(3);
+        ad1.addFirst(4);
+        System.out.println(ad1.removeLast());
+        ad1.addFirst(6);
+        ad1.addLast(7);
+        ad1.addFirst(8);
+        System.out.println(ad1.removeLast());
+        ad1.addFirst(10);
+        ad1.addLast(11);
+        System.out.println(ad1.removeLast());
+        ad1.addFirst(13);
+        System.out.println(ad1.get(2));
+        ad1.addLast(15);
+        System.out.println(ad1.get(3));
+        System.out.println(ad1.get(4));
+        ad1.addFirst(18);
+        System.out.println(ad1.removeFirst());
+        ad1.addFirst(20);
+        System.out.println(ad1.get(1));
+
 
 
 
