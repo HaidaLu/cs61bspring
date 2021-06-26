@@ -59,6 +59,9 @@ public class ArrayDeque<T> {
             resize(size * 2);
 
         }
+        if (size < items.length && nextLast == items.length ) {
+            nextLast = nextLast % items.length;
+        }
         items[nextLast] = item;
         nextLast++;
         size++;

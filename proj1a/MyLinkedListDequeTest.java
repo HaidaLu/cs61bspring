@@ -85,7 +85,39 @@ public class MyLinkedListDequeTest {
         System.out.println(ad1.isEmpty());
 
          */
+        /*
+        ad1.addLast(1);
+        System.out.println(ad1.removeFirst());
+        System.out.println(ad1.isEmpty());
+        */
 
+
+        //at AGTestArrayDeque.test11:509 (AGTestArrayDeque.java)Making random calls to add/remove/get.
+        ad1.addFirst(0);
+        ad1.addLast(1);
+        ad1.addFirst(2);
+        ad1.removeLast() ;
+        ad1.get(0) ;
+        ad1.addFirst(5);
+        ad1.get(1)     ;
+        ad1.removeFirst()   ;
+        ad1.addLast(8);
+        ad1.addLast(9);
+        ad1.removeLast()  ;
+        ad1.removeLast()    ;
+        ad1.get(0)   ;
+        ad1.addFirst(13);
+        ad1.addFirst(14);
+        ad1.removeFirst()   ;
+        ad1.removeLast()   ;
+        ad1.get(0)     ;
+        ad1.addFirst(18);
+        ad1.printDeque();
+        ad1.addLast(19);
+        ad1.removeFirst() ;
+        ad1.removeFirst()  ;
+        ad1.removeFirst()  ;
+        ad1.addLast(23);
 
 
 
