@@ -10,6 +10,14 @@ public class MyLinkedListDequeTest {
 
         ArrayDeque<Integer> ad1 = new ArrayDeque<Integer>();
         /*
+        ad1.addFirst(5);
+        ad1.removeFirst();
+        System.out.println(ad1.isEmpty());*/
+        //ad1.addFirst(5);
+        //System.out.println(ad1.removeFirst());
+        //System.out.println(ad1.isEmpty());
+
+        /*
         ad1.addFirst(1);
         ad1.addLast(2);
         ad1.addLast(3);
@@ -36,7 +44,7 @@ public class MyLinkedListDequeTest {
         //ad1.addFirst(3);
         //System.out.println(ad1.removeLast());
         //System.out.println(ad1.isEmpty());
-
+        /*
         ad1.addFirst(1);
         ad1.addFirst(1);
         ad1.addFirst(1);
@@ -54,9 +62,28 @@ public class MyLinkedListDequeTest {
         System.out.println(ad1.removeFirst());
         System.out.println(ad1.removeFirst());
         System.out.println(ad1.isEmpty());
-        System.out.println(ad1.get(0));
+        System.out.println(ad1.get(0));*/
 
-        ArrayDeque<Integer> ad2 = new ArrayDeque<Integer>();
+        //ArrayDeque<Integer> ad2 = new ArrayDeque<Integer>();
+
+        ad1.addLast(0);
+        System.out.println(ad1.get(0));
+        ad1.addLast(2);
+        ad1.addLast(3);
+        ad1.removeLast();
+        ad1.removeFirst();
+        ad1.addFirst(6);
+        ad1.addFirst(7);
+        ad1.addFirst(8);
+        ad1.addLast(9);
+        ad1.addFirst(10);
+        ad1.addLast(11);
+        ad1.addLast(12);
+        ad1.addLast(13);
+        ad1.addFirst(14);
+        System.out.println(ad1.removeLast());
+        System.out.println(ad1.get(1));
+        ad1.printDeque();
 
 
 
