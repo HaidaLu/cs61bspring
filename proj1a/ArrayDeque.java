@@ -12,6 +12,10 @@ public class ArrayDeque<T> {
     }
 
     public void addFirst(T item) {
+        if(size == 0){
+            nextLast = 0;
+            nextFirst = items.length - 1;
+        }
         while (size > 16 && usageFactor() < 25) {
             halfItemLength();
         }
@@ -35,15 +39,19 @@ public class ArrayDeque<T> {
 
     private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
-        System.arraycopy(items, 0, a, 0, (nextLast - 1 + size) % size + 1);
-        System.arraycopy(items, (nextFirst + 1) % size, a, (nextFirst + 1 + (capacity - size)) % size, size - (nextFirst + 1));
+        System.arraycopy(items, 0, a, 0, nextLast);
+        int restFirst = size - nextLast;
+        System.arraycopy(items, nextLast, a, nextLast + (capacity - size) , restFirst);
         items = a;
-        nextFirst = nextFirst + (capacity - size);
-        nextLast = (nextLast - 1 + size) % size + 1;
+        nextFirst = nextLast + (capacity - size - 1);
     }
 
 
     public void addLast(T item) {
+        if(size == 0){
+            nextLast = 0;
+            nextFirst = items.length - 1;
+        }
         while (size > 16 && usageFactor() < 25) {
             halfItemLength();
         }
@@ -52,7 +60,7 @@ public class ArrayDeque<T> {
 
         }
         items[nextLast] = item;
-        nextLast = (nextLast + 1) % items.length;
+        nextLast++;
         size++;
     }
 
