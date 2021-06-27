@@ -83,7 +83,7 @@ public class MyLinkedListDequeTest {
         System.out.println(ad1.removeFirst());
         System.out.println(ad1.isEmpty());
 
-         
+
         /*
         ad1.addLast(1);
         System.out.println(ad1.removeFirst());

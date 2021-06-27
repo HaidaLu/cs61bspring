@@ -1,4 +1,4 @@
-/*难点在resize 一个扩容一个缩容，两个指针应该怎么变化
+/*
 * */
 
 public class ArrayDeque<T> {
@@ -25,11 +25,9 @@ public class ArrayDeque<T> {
         if (size == items.length) {
             resize(size * 2);
         }
-        //System.out.println(items.length);
         items[nextFirst] = item;
         nextFirst = (nextFirst - 1 + items.length) % items.length;
         size++;
-        //System.out.println("next" + nextFirst);
     }
 
     public void addLast(T item) {
@@ -57,7 +55,9 @@ public class ArrayDeque<T> {
     private int usageFactor() {
         return (size * 100) / items.length;
     }
-
+    /*add and remove must take constant time, except during resizing operations.
+        resize method accepts loop. so I create a brand new array and new pointer.
+    * */
     private void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
         for (int i = 0; i<size; i++){
@@ -66,17 +66,7 @@ public class ArrayDeque<T> {
         items = a;
         nextFirst = items.length - 1;
         nextLast = size;
-        /*
-        System.arraycopy(items, 0, a, 0, nextLast);
-        int restFirst = size - nextLast;
-        System.arraycopy(items, nextLast, a, nextLast + (capacity - size) , restFirst);
-        items = a;
-        nextFirst = nextLast + (capacity - size - 1);
-        System.out.println(items.length);*/
-
     }
-
-
 
 
     public boolean isEmpty() {
@@ -128,25 +118,4 @@ public class ArrayDeque<T> {
             return items[(nextFirst+1+index) % items.length];
         }
     }
-
-    /*
-    private void halfItemLength() {
-        T[] a = (T[]) new Object[items.length / 2];
-        int newLength = items.length / 2;
-        int newFirst = (nextFirst - items.length) % newLength + newLength;
-        int newLast = (nextLast - items.length) % newLength + newLength;
-        if (nextFirst<newLast){
-            System.arraycopy(items,nextFirst,a,newFirst,size);
-        }else{
-            System.arraycopy(items,0,a,0,nextLast);
-            System.arraycopy(items,(nextFirst+1) % items.length, a,(newFirst+1) % newLength, size-nextLast);
-        }
-        //System.arraycopy(items,0, a, 0, );
-        //System.arraycopy(items, 0, a, 0, size);
-
-
-        items = a;
-        nextLast = newLast;
-        nextFirst = newFirst;
-    }*/
 }
