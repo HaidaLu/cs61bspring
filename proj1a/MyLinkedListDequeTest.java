@@ -29,7 +29,6 @@ public class MyLinkedListDequeTest {
         System.out.println(ad1.get(0));
         System.out.println(ad1.get(1));*/
 
-        //Add First 0 1 2 3 4 5 6 7 8 9
         /*
         ad1.addFirst(0);
         ad1.printDeque();
@@ -63,10 +62,10 @@ public class MyLinkedListDequeTest {
         ad1.addLast(9);
         ad1.printDeque();
         System.out.println();
-         */
+        */
 
         //add - remove -isEmpty
-        /*
+
         ad1.addFirst(1);
         System.out.println(ad1.removeLast());
         System.out.println(ad1.isEmpty());
@@ -84,7 +83,7 @@ public class MyLinkedListDequeTest {
         System.out.println(ad1.removeFirst());
         System.out.println(ad1.isEmpty());
 
-         */
+         
         /*
         ad1.addLast(1);
         System.out.println(ad1.removeFirst());
@@ -93,6 +92,7 @@ public class MyLinkedListDequeTest {
 
 
         //at AGTestArrayDeque.test11:509 (AGTestArrayDeque.java)Making random calls to add/remove/get.
+        /*
         ad1.addFirst(0);
         ad1.addLast(1);
         ad1.addFirst(2);
@@ -117,7 +117,57 @@ public class MyLinkedListDequeTest {
         ad1.removeFirst() ;
         ad1.removeFirst()  ;
         ad1.removeFirst()  ;
-        ad1.addLast(23);
+        ad1.addLast(23);*/
+
+
+        /*
+        ad1.addFirst(1);
+        ad1.addFirst(2);
+        ad1.addFirst(3);
+        ad1.addFirst(4);
+        ad1.addFirst(5);
+        ad1.addFirst(6);
+        ad1.addFirst(7);
+        ad1.addFirst(8);
+        ad1.addFirst(9);
+        ad1.addFirst(9);
+        ad1.addFirst(9);
+        ad1.addFirst(9);
+        ad1.addFirst(9);
+        ad1.addFirst(9);
+        ad1.addFirst(9);
+        ad1.addFirst(9);
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        ad1.removeFirst();
+        System.out.println(ad1.isEmpty());
+
+        ad1.printDeque();
+        */
+        /*
+        for (int i = 0; i< 64; i++){
+            ad1.addFirst(i);
+
+        }
+        for (int i = 0; i< 64; i++){
+            ad1.removeFirst();
+        }
+        System.out.println("-----");
+        ad1.addFirst(1);
+        //System.out.println((7-16)%8 + 8);*/
+
 
 
 
