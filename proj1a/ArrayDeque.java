@@ -1,5 +1,8 @@
-/*
-* */
+/*  其实proj1a非常简单，重点在resize这个方法上，并且proj并没有要求resize需要constant time(能否用constant time实现有待考虑)
+*   最开始我没有看到可以不用constant time这个要求，挣扎了非常久，把扩容和缩容分成了两个方法，扩容思考了很久后倒能实现，nextLast定，分成两半，用System.arraycopy来扩。
+*   但是缩容真的没想出合适的。
+*   之后发现resize可以用循环一切就简化很多了，直接以和printDeque一样的方法把链表每个值赋给新的，我是相当于都用addLast，最后新的nextFirst = items.length -1 , nextLast = size;
+*  */
 
 public class ArrayDeque<T> {
     private int size;
