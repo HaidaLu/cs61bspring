@@ -20,15 +20,6 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
         this.capacity = capacity;
     }
 
-    @Override
-    public int capacity() {
-        return capacity;
-    }
-
-    @Override
-    public int fillCount() {
-        return fillCount;
-    }
 
     /**
      * Adds x to the end of the ring buffer. If there is no room, then
@@ -66,11 +57,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>  {
      * Return oldest item, but don't remove it.
      */
     public T peek() {
-        if (!isEmpty()) {
-            return rb[first];
-        } else {
-            throw new RuntimeException("Ring Buffer Underflow");
-        }
+        return rb[first];
     }
 
     @Override
