@@ -26,7 +26,7 @@ public class GuitarString {
     public void pluck() {
         //       Make sure that your random numbers are different from each other.
 
-        while(!buffer.isEmpty()) {
+        while (!buffer.isEmpty()) {
             buffer.dequeue();
         }
         while (!buffer.isFull()) {
