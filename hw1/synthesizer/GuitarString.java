@@ -16,7 +16,7 @@ public class GuitarString {
         double dCapacity = Math.round(SR / frequency);
         int capacity = (int) dCapacity;
         buffer = new ArrayRingBuffer<Double>(capacity);
-        while(!buffer.isFull()){
+        while (!buffer.isFull()) {
             buffer.enqueue(0.0);
         }
     }
