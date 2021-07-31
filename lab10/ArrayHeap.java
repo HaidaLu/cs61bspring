@@ -135,7 +135,6 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         // Throws an exception if index is invalid. DON'T CHANGE THIS LINE.
         validateSinkSwimArg(index); //这个只是超过会throw exception 不能当递归的判定条件
 
-        /** TODO: Your code here. */
         /* My duplicate version
         if (min(index, leftIndex(index)) == leftIndex(index)) {
             swap (index, leftIndex(index));
@@ -171,7 +170,6 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             resize(contents.length * 2);
         }
 
-        /* TODO: Your code here! */
         size = size + 1;
         contents[size] = new Node(item, priority);
         swim(size);
@@ -212,7 +210,6 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      */
     @Override
     public T removeMin() {
-        /* TODO: Your code here! */
         swap(1, size);
         T min = contents[size].myItem;
         contents[size] = null;
@@ -241,7 +238,6 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
     // 改哪个node？？？？
     @Override
     public void changePriority(T item, double priority) {
-        /* TODO: Your code here! */
         int index = 0;
         for (int i = 1; i <= size; i++) {
             if (contents[i].item().equals(item)) {
