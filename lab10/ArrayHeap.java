@@ -7,6 +7,9 @@ import static org.junit.Assert.*;
  * (represented by type T), along with a priority value. Why do it this way? It
  * will be useful later on in the class...
  */
+/* The class ArrayHeap implements a binary min-heap using an array
+*
+* */
 public class ArrayHeap<T> implements ExtrinsicPQ<T> {
     private Node[] contents;
     private int size;
@@ -27,24 +30,24 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      * Returns the index of the node to the left of the node at i.
      */
     private static int leftIndex(int i) {
-        /* TODO: Your code here! */
-        return 0;
+        return 2 * i;
     }
 
     /**
      * Returns the index of the node to the right of the node at i.
      */
     private static int rightIndex(int i) {
-        /* TODO: Your code here! */
-        return 0;
+        return 2 * i + 1;
     }
 
     /**
      * Returns the index of the node that is the parent of the node at i.
      */
     private static int parentIndex(int i) {
-        /* TODO: Your code here! */
-        return 0;
+        if (i == 1) {
+            return 1;
+        }
+        return i / 2;
     }
 
     /**
@@ -107,7 +110,21 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         // Throws an exception if index is invalid. DON'T CHANGE THIS LINE.
         validateSinkSwimArg(index);
 
-        /** TODO: Your code here. */
+        if (index == 1) {
+            return;
+        }
+
+        /* 迭代方法*/
+        while (getNode(index).myPriority < getNode(parentIndex(index)).myPriority) {
+            swap(index, parentIndex(index));
+            index = parentIndex(index);
+        }
+
+        /* 递归的方法*/
+        //if (min(index, parentIndex(index)) == index) {
+        //    swap(index, parentIndex(index));
+        //    swim(parentIndex(index));
+        //}
         return;
     }
 
@@ -116,15 +133,36 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      */
     private void sink(int index) {
         // Throws an exception if index is invalid. DON'T CHANGE THIS LINE.
-        validateSinkSwimArg(index);
+        validateSinkSwimArg(index); //这个只是超过会throw exception 不能当递归的判定条件
 
         /** TODO: Your code here. */
+        /* My duplicate version
+        if (min(index, leftIndex(index)) == leftIndex(index)) {
+            swap (index, leftIndex(index));
+            sink(leftIndex(index));
+        }
+        if (min(index, rightIndex(index)) == rightIndex(index)) {
+            swap(index, rightIndex(index));
+            sink(rightIndex(index));
+        } */
+        //不对 我的理解有错 sink 是将结点和它的子结点的较小值比较，而不是先比较左边再比较右边
+
+        if (!inBounds(leftIndex(index))) {
+            return;
+        }
+        int theChild = min(leftIndex(index), rightIndex(index));
+        if (min(index, theChild) != index) {
+            swap(index, theChild);
+            sink(theChild);
+        }
         return;
     }
 
     /**
      * Inserts an item with the given priority value. This is enqueue, or offer.
      * To implement this method, add it to the end of the ArrayList, then swim it.
+     * 1. 将新结点插入到Array的最后
+     * 2. Swim新结点
      */
     @Override
     public void insert(T item, double priority) {
@@ -134,6 +172,10 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         }
 
         /* TODO: Your code here! */
+        size = size + 1;
+        contents[size] = new Node(item, priority);
+        swim(size);
+
     }
 
     /**
@@ -142,8 +184,10 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      */
     @Override
     public T peek() {
-        /* TODO: Your code here! */
-        return null;
+        if (size == 0) {
+            return null;
+        }
+        return contents[1].myItem;
     }
 
     /**
@@ -155,10 +199,26 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      * them repeatedly. Make sure to avoid loitering by nulling out the dead
      * item.
      */
+    /**
+     * 1. Swap the item at the root with the item of the right-most leaf node.
+     *
+     * 2. Remove the right-most leaf node, which now contains the min item.
+     *
+     * 3. Bubble down the new root until it is smaller than both its children.
+     *    If you reach a point where you can either bubble down through the left
+     *    or right child, you must choose the smaller of the two.
+     *    This process is also called sinking.
+     * @return
+     */
     @Override
     public T removeMin() {
         /* TODO: Your code here! */
-        return null;
+        swap(1, size);
+        T min = contents[size].myItem;
+        contents[size] = null;
+        size -= 1;
+        sink(1);
+        return min;
     }
 
     /**
@@ -178,9 +238,23 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
      * bonus problem, but shouldn't be too hard if you really understand heaps
      * and think about the algorithm before you start to code.
      */
+    // 改哪个node？？？？
     @Override
     public void changePriority(T item, double priority) {
         /* TODO: Your code here! */
+        int index = 0;
+        for (int i = 1; i <= size; i++) {
+            if (contents[i].item().equals(item)) {
+                contents[i] = new Node(item, priority);
+                index = i;
+                break;
+            }
+        }
+        if (index == 0) {
+            return;
+        }
+        swim(index);
+        sink(index);
         return;
     }
 
